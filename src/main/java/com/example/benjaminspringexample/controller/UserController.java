@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/user")
 @SessionAttributes("user")
@@ -16,6 +18,8 @@ public class UserController {
 
 	@GetMapping
 	public String index(Model model) {
+		model.addAttribute("users", userService.getAll());
+		List<User> users = userService.getAll();
 		return "index";
 	}
 
@@ -29,6 +33,5 @@ public class UserController {
 	public String addUser(@ModelAttribute User user) {
 		userService.addUser(user);
 		return "redirect:/user/";
-//		return "index";
 	}
 }

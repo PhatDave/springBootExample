@@ -13,13 +13,8 @@ public class UserServiceImpl implements UserService {
 	private final UserRepository userRepository;
 
 	@Override
-	public User getById(Long id) {
-		return null;
-	}
-
-	@Override
 	public List<User> getAll() {
-		return null;
+		return userRepository.findAll();
 	}
 
 	@Override
